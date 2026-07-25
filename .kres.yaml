@@ -1,4 +1,8 @@
 ---
+kind: common.Repository
+spec:
+  skipSlackNotify: true
+---
 kind: pkgfile.Build
 spec:
   targets:
