@@ -35,6 +35,7 @@ IGNORE_VIOLATIONS_BY_ARCH = {
         'CONFIG_KASAN_HW_TAGS', # incompatible with OpenZFS and NVIDIA due to 'GPL-incompatible module nvidia.ko uses GPL-only symbol 'kasan_flag_enabled''
     },
     'amd64': {
+        'CONFIG_ARM64_PAN', # Removed since v7.0
         #'CONFIG_CFI_AUTO_DEFAULT', # Disabled due to issues with GPL-incompatible modules
     },
 }
