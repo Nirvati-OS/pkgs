@@ -252,7 +252,7 @@ kernel-olddefconfig:
 kernel-%:
 	for platform in $(shell echo $(PLATFORM) | tr "," " "); do \
 	  arch=`basename $$platform` ; \
-	  $(MAKE) docker-kernel-build PLATFORM=$$platform BUILDKIT_MULTI_PLATFORM=0 TARGET_ARGS="--build-arg=KERNEL_TARGET=olddefconfig --tag=$(REGISTRY)/$(USERNAME)/kernel:$(TAG)-$$arch --load"; \
+	  $(MAKE) docker-kernel-build PLATFORM=$$platform BUILDKIT_MULTI_PLATFORM=0 TARGET_ARGS="--build-arg=PREPARE_ONLY=true --tag=$(REGISTRY)/$(USERNAME)/kernel:$(TAG)-$$arch --load"; \
 	  docker run --rm -it --entrypoint=/bin/bash -w /src -v $$PWD/kernel/build/config-$$arch:/host/.hostconfig $(REGISTRY)/$(USERNAME)/kernel:$(TAG)-$$arch -c 'cp /host/.hostconfig .config && make LLVM=1 $* && cp .config /host/.hostconfig'; \
 	done
 
