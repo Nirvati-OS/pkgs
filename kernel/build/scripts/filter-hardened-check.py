@@ -15,27 +15,12 @@ Names of violations we ignore for a good reason.
 """
 IGNORE_VIOLATIONS = {
     'CONFIG_MODULES', # enabled for backwards compat, modules require signing key which is thrown away
-    'CONFIG_IA32_EMULATION', # see https://github.com/siderolabs/pkgs/pull/125
-    'CONFIG_COMPAT', # enabled when CONFIG_IA32_EMULATION is enabled
-    'CONFIG_INIT_ON_FREE_DEFAULT_ON', # disabled init_on_free=1 due to performance
     'CONFIG_BINFMT_MISC', # build as module, can only be loaded explicitly
-    'CONFIG_WERROR', # breaks downstream kernel modules build such as drbd
     'CONFIG_DEBUG_VIRTUAL', # disabled due to performance reasons
-    'CONFIG_LOCK_DOWN_KERNEL_FORCE_CONFIDENTIALITY', # disabled until further research is done, see https://github.com/siderolabs/pkgs/issues/918
     'CONFIG_RANDSTRUCT_FULL', # disabled due to performance reasons
-    'CONFIG_RANDSTRUCT_PERFORMANCE', # disabled due to performance reasons
-    'CONFIG_UBSAN_TRAP', # disabled due to performance reasons
-    'CONFIG_UBSAN_LOCAL_BOUNDS', # A Clang-specific option, depends on UBSAN_TRAP ^, hence cannot be enabled
-    'CONFIG_CFI_CLANG', # Conflicts with nonfree drivers, investigate more, see https://github.com/siderolabs/pkgs/issues/918
-    'CONFIG_CFI_PERMISSIVE', # Not yet tested, investigate more, see https://github.com/siderolabs/pkgs/issues/918
-    'CONFIG_SECURITY_SELINUX_DEVELOP', # SELinux enabled, but permissive unless enforcing=1. TODO: force enforcing mode when complete
-    'CONFIG_SPECULATION_MITIGATIONS', # Renamed in the kernel to 'CONFIG_CPU_MITIGATIONS'
-    'CONFIG_EFI_DISABLE_PCI_DMA', # enabling this breaks boot with no visible error messages to debug (https://github.com/siderolabs/talos/issues/8743)
     'CONFIG_INET_DIAG', # last vulnerability prior to v4.1. Required for CNIs such as Cilium to terminate sockets. (https://github.com/siderolabs/pkgs/issues/1028)
     'CONFIG_IOMMU_DEFAULT_DMA_STRICT', # performance impact https://github.com/siderolabs/talos/issues/9531
-    'CONFIG_PROC_MEM_NO_FORCE', # might break some applications, so instead we will enforce in the kernel arg 'proc_mem.force_override=never' (https://github.com/a13xp0p0v/kernel-hardening-checker/pull/201)
     'CONFIG_GCC_PLUGIN_LATENT_ENTROPY', # doesn't seem very relevant, entropy is low quality, and not available in Clang, https://github.com/torvalds/linux/blob/37a93dd5c49b5fda807fd204edf2547c3493319c/scripts/gcc-plugins/Kconfig#L25-L33
-    'CONFIG_MODULE_SIG_FORCE', # see https://github.com/siderolabs/talos/issues/11989
     'CONFIG_IOMMU_DEFAULT_DMA_LAZY', # performance impact, we can reconsider later
 }
 
@@ -50,7 +35,7 @@ IGNORE_VIOLATIONS_BY_ARCH = {
         'CONFIG_KASAN_HW_TAGS', # incompatible with OpenZFS and NVIDIA due to 'GPL-incompatible module nvidia.ko uses GPL-only symbol 'kasan_flag_enabled''
     },
     'amd64': {
-        'CONFIG_CFI_AUTO_DEFAULT', # Disabled due to issues with GPL-incompatible modules
+        #'CONFIG_CFI_AUTO_DEFAULT', # Disabled due to issues with GPL-incompatible modules
     },
 }
 
