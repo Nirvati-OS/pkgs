@@ -22,6 +22,7 @@ IGNORE_VIOLATIONS = {
     'CONFIG_IOMMU_DEFAULT_DMA_STRICT', # performance impact https://github.com/siderolabs/talos/issues/9531
     'CONFIG_GCC_PLUGIN_LATENT_ENTROPY', # doesn't seem very relevant, entropy is low quality, and not available in Clang, https://github.com/torvalds/linux/blob/37a93dd5c49b5fda807fd204edf2547c3493319c/scripts/gcc-plugins/Kconfig#L25-L33
     'CONFIG_IOMMU_DEFAULT_DMA_LAZY', # performance impact, we can reconsider later
+    'CONFIG_CFI_CLANG', # Renamed to CONFIG_CFI in v6.18
 }
 
 """
