@@ -61,11 +61,6 @@ vars:
   flannel_cni_sha256: 568809672085277cccf5b245eff3d42dc64c5229e4d068e6520f80193d37bac2
   flannel_cni_sha512: 4c695c9eb675a77e6fff80480723601cb3a54911673ab0e809b1385fe670323884c7eab97f209cdcc94917fad320403c34f3fcd54a7da183437604cd60393ecd
 
-  # renovate: datasource=git-refs versioning=git depName=https://github.com/google/gasket-driver.git
-  gasket_driver_ref: 5815ee3908a46a415aac616ac7b9aedcb98a504c
-  gasket_driver_sha256: 90cb41d10df702ec63b86968e1e7123abef6df1fdef5e7e2138d57618efbffde
-  gasket_driver_sha512: e981c8e7dd72efa0ba5cb03f9b851949d0241cb8c438a93a07ba78aad44ad4103caad9075f0b0f4caa3c742de67be1e667a881f08f542d615dd3af57a0cac562
-
   # renovate: datasource=git-tags extractVersion=^grub-(?<version>.*)$ depName=git://git.savannah.gnu.org/grub.git
   grub_version: 2.14
   grub_sha256: bc8d3c73535b8838d8c8e2654d73edc4e6ae8c8acdb45d5df5dc9a1547446d43

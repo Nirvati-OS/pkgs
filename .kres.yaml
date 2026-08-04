@@ -73,7 +73,6 @@ spec:
     - kernel
     - drbd-pkg
     - ena-pkg
-    - gasket-driver-pkg
     - hailort-pkg
     - mellanox-mstflint-pkg
     - nvidia-open-gpu-kernel-modules-lts-pkg
