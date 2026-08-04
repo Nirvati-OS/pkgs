@@ -102,13 +102,13 @@ index 2e3a746fcc6d..3bb0e085f229 100644
  	If enabled, provide RFC2861 behavior and time out the congestion
  	window after an idle period.  An idle period is defined at
 diff --git a/Makefile b/Makefile
-index 58f3b3e2dc1c..34d90a9acf9c 100644
+index 75e5c9573863..2e8b7f46cff4 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -2,7 +2,7 @@
  VERSION = 7
  PATCHLEVEL = 1
- SUBLEVEL = 5
+ SUBLEVEL = 6
 -EXTRAVERSION =
 +EXTRAVERSION = -hardened1
  NAME = Baby Opossum Posse
@@ -358,7 +358,7 @@ index 0908c44d51e6..edf0b9ea159c 100644
  /* Used in PAGE_KERNEL_* macros which are reasonably used out-of-tree: */
  EXPORT_SYMBOL(__default_kernel_pte_mask);
 diff --git a/arch/x86/mm/init_64.c b/arch/x86/mm/init_64.c
-index 7e20b22d658b..c144d4671dad 100644
+index d57f29ca23a5..58682fa5ba81 100644
 --- a/arch/x86/mm/init_64.c
 +++ b/arch/x86/mm/init_64.c
 @@ -104,9 +104,9 @@ static inline pgprot_t prot_sethuge(pgprot_t prot)
@@ -988,7 +988,7 @@ index 9c3be157397e..bb05d4a07c46 100644
  {
  	return &init_user_ns;
 diff --git a/include/net/tcp.h b/include/net/tcp.h
-index 607298501e12..93c67c946953 100644
+index 284cde93bd30..501e43282ab2 100644
 --- a/include/net/tcp.h
 +++ b/include/net/tcp.h
 @@ -285,6 +285,7 @@ static_assert((1 << ATO_BITS) > TCP_DELACK_MAX);
@@ -1000,10 +1000,10 @@ index 607298501e12..93c67c946953 100644
  #define TCP_RACK_LOSS_DETECTION  0x1 /* Use RACK to detect losses */
  #define TCP_RACK_STATIC_REO_WND  0x2 /* Use static RACK reo wnd */
 diff --git a/init/Kconfig b/init/Kconfig
-index 826a7d768ca3..31693b42dbdd 100644
+index d78a6e616311..ac2f93ac79c1 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -536,6 +536,7 @@ config CROSS_MEMORY_ATTACH
+@@ -539,6 +539,7 @@ config CROSS_MEMORY_ATTACH
  config AUDIT
  	bool "Auditing support"
  	depends on NET
@@ -1011,7 +1011,7 @@ index 826a7d768ca3..31693b42dbdd 100644
  	help
  	  Enable auditing infrastructure that can be used with another
  	  kernel subsystem, such as SELinux (which requires this for
-@@ -1434,6 +1435,22 @@ config USER_NS
+@@ -1437,6 +1438,22 @@ config USER_NS
  
  	  If unsure, say N.
  
@@ -1034,7 +1034,7 @@ index 826a7d768ca3..31693b42dbdd 100644
  config PID_NS
  	bool "PID Namespaces"
  	default y
-@@ -1700,9 +1717,8 @@ menuconfig EXPERT
+@@ -1703,9 +1720,8 @@ menuconfig EXPERT
  	  Only use this if you really know what you are doing.
  
  config UID16
@@ -1045,7 +1045,7 @@ index 826a7d768ca3..31693b42dbdd 100644
  	help
  	  This enables the legacy 16-bit UID syscall wrappers.
  
-@@ -1888,8 +1904,7 @@ config SHMEM
+@@ -1891,8 +1907,7 @@ config SHMEM
  	  which may be appropriate on small systems without swap.
  
  config AIO
@@ -1080,7 +1080,7 @@ index 103b6c88f252..63d78c647e2e 100644
  	},
  	{
 diff --git a/kernel/audit.c b/kernel/audit.c
-index 41a2de70fa43..b1e56dbd9d4e 100644
+index 562476937fa7..c83c3677802f 100644
 --- a/kernel/audit.c
 +++ b/kernel/audit.c
 @@ -1789,6 +1789,9 @@ static int __init audit_enable(char *str)
@@ -1760,7 +1760,7 @@ index 8b661fff5eed..a8995782fd7d 100644
  static int __init setup_slab_nomerge(char *str)
  {
 diff --git a/mm/slub.c b/mm/slub.c
-index eed3251eb7d0..fcb4e8c1c5e6 100644
+index 12ace2932927..c77c2edc8227 100644
 --- a/mm/slub.c
 +++ b/mm/slub.c
 @@ -44,6 +44,7 @@
@@ -2359,7 +2359,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  	rcu_sheaf->objects[rcu_sheaf->size++] = obj;
  
  	if (likely(rcu_sheaf->size < s->sheaf_capacity)) {
-@@ -6073,7 +6282,7 @@ static void free_to_pcs_bulk(struct kmem_cache *s, size_t size, void **p)
+@@ -6072,7 +6281,7 @@ static void free_to_pcs_bulk(struct kmem_cache *s, size_t size, void **p)
  		memcg_slab_free_hook(s, slab, p + i, 1);
  		alloc_tagging_slab_free_hook(s, slab, p + i, 1);
  
@@ -2368,7 +2368,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  			p[i] = p[--size];
  			continue;
  		}
-@@ -6133,6 +6342,14 @@ static void free_to_pcs_bulk(struct kmem_cache *s, size_t size, void **p)
+@@ -6135,6 +6344,14 @@ static void free_to_pcs_bulk(struct kmem_cache *s, size_t size, void **p)
  	main = pcs->main;
  	batch = min(size, s->sheaf_capacity - main->size);
  
@@ -2383,7 +2383,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  	memcpy(main->objects + main->size, p, batch * sizeof(void *));
  	main->size += batch;
  
-@@ -6159,11 +6376,13 @@ static void free_to_pcs_bulk(struct kmem_cache *s, size_t size, void **p)
+@@ -6161,11 +6378,13 @@ static void free_to_pcs_bulk(struct kmem_cache *s, size_t size, void **p)
  	 * many full sheaves, free the rest to slab pages
  	 */
  fallback:
@@ -2396,8 +2396,8 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
 +		check_set_canary_bulk(s, remote_nr, &remote_objects[0], s->random_active, s->random_inactive);
  		__kmem_cache_free_bulk(s, remote_nr, &remote_objects[0]);
  		stat_add(s, FREE_SLOWPATH, remote_nr);
- 		if (i < size) {
-@@ -6218,6 +6437,7 @@ static void free_deferred_objects(struct irq_work *work)
+ 	}
+@@ -6216,6 +6435,7 @@ static void free_deferred_objects(struct irq_work *work)
  		 */
  		set_freepointer(s, x, NULL);
  
@@ -2405,7 +2405,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  		__slab_free(s, slab, x, x, 1, _THIS_IP_);
  		stat(s, FREE_SLOWPATH);
  	}
-@@ -6248,15 +6468,33 @@ static __fastpath_inline
+@@ -6246,15 +6466,33 @@ static __fastpath_inline
  void slab_free(struct kmem_cache *s, struct slab *slab, void *object,
  	       unsigned long addr)
  {
@@ -2440,7 +2440,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  	__slab_free(s, slab, object, object, 1, addr);
  	stat(s, FREE_SLOWPATH);
  }
-@@ -6266,11 +6504,16 @@ void slab_free(struct kmem_cache *s, struct slab *slab, void *object,
+@@ -6264,11 +6502,16 @@ void slab_free(struct kmem_cache *s, struct slab *slab, void *object,
  static noinline
  void memcg_alloc_abort_single(struct kmem_cache *s, void *object)
  {
@@ -2458,7 +2458,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  		__slab_free(s, slab, object, object, 1, _RET_IP_);
  }
  #endif
-@@ -6313,7 +6556,7 @@ static void slab_free_after_rcu_debug(struct rcu_head *rcu_head)
+@@ -6311,7 +6554,7 @@ static void slab_free_after_rcu_debug(struct rcu_head *rcu_head)
  		return;
  
  	/* resume freeing */
@@ -2467,7 +2467,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  		__slab_free(s, slab, object, object, 1, _THIS_IP_);
  		stat(s, FREE_SLOWPATH);
  	}
-@@ -6334,13 +6577,20 @@ static noinline void warn_free_bad_obj(struct kmem_cache *s, void *obj)
+@@ -6332,13 +6575,20 @@ static noinline void warn_free_bad_obj(struct kmem_cache *s, void *obj)
  	struct slab *slab;
  
  	slab = virt_to_slab(obj);
@@ -2488,7 +2488,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  	if (WARN_ONCE(cachep != s,
  			"kmem_cache_free(%s, %p): object belongs to different cache %s\n",
  			s->name, obj, cachep ? cachep->name : "(NULL)")) {
-@@ -6348,6 +6598,7 @@ static noinline void warn_free_bad_obj(struct kmem_cache *s, void *obj)
+@@ -6346,6 +6596,7 @@ static noinline void warn_free_bad_obj(struct kmem_cache *s, void *obj)
  			print_tracking(cachep, obj);
  		return;
  	}
@@ -2496,7 +2496,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  }
  
  /**
-@@ -6401,7 +6652,7 @@ static inline size_t slab_ksize(struct slab *slab)
+@@ -6399,7 +6650,7 @@ static inline size_t slab_ksize(struct slab *slab)
  	 * or any other metadata back there then we can
  	 * only use the space before that information.
  	 */
@@ -2505,7 +2505,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  		return s->inuse;
  	else if (obj_exts_in_object(s, slab))
  		return s->inuse;
-@@ -6481,8 +6732,12 @@ static void free_large_kmalloc(struct page *page, void *object)
+@@ -6479,8 +6730,12 @@ static void free_large_kmalloc(struct page *page, void *object)
  		return;
  	}
  
@@ -2518,7 +2518,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  
  	kmemleak_free(object);
  	kasan_kfree_large(object);
-@@ -7315,6 +7570,23 @@ int __kmem_cache_alloc_bulk(struct kmem_cache *s, gfp_t flags, size_t size,
+@@ -7313,6 +7568,23 @@ int __kmem_cache_alloc_bulk(struct kmem_cache *s, gfp_t flags, size_t size,
  		stat_add(s, ALLOC_SLOWPATH, i);
  	}
  
@@ -2542,7 +2542,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  	return i;
  
  error:
-@@ -7332,6 +7604,7 @@ int kmem_cache_alloc_bulk_noprof(struct kmem_cache *s, gfp_t flags, size_t size,
+@@ -7330,6 +7602,7 @@ int kmem_cache_alloc_bulk_noprof(struct kmem_cache *s, gfp_t flags, size_t size,
  {
  	unsigned int i = 0;
  	void *kfence_obj;
@@ -2550,7 +2550,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  
  	if (!size)
  		return 0;
-@@ -7362,8 +7635,10 @@ int kmem_cache_alloc_bulk_noprof(struct kmem_cache *s, gfp_t flags, size_t size,
+@@ -7360,8 +7633,10 @@ int kmem_cache_alloc_bulk_noprof(struct kmem_cache *s, gfp_t flags, size_t size,
  		 * the percpu sheaves, we have bigger problems.
  		 */
  		if (unlikely(__kmem_cache_alloc_bulk(s, flags, size - i, p + i) == 0)) {
@@ -2562,7 +2562,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  			if (kfence_obj)
  				__kfence_free(kfence_obj);
  			return 0;
-@@ -7385,8 +7660,11 @@ int kmem_cache_alloc_bulk_noprof(struct kmem_cache *s, gfp_t flags, size_t size,
+@@ -7383,8 +7658,11 @@ int kmem_cache_alloc_bulk_noprof(struct kmem_cache *s, gfp_t flags, size_t size,
  	 * memcg and kmem_cache debug support and memory initialization.
  	 * Done outside of the IRQ disabled fastpath loop.
  	 */
@@ -2575,7 +2575,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  		return 0;
  	}
  
-@@ -7413,10 +7691,10 @@ EXPORT_SYMBOL(kmem_cache_alloc_bulk_noprof);
+@@ -7411,10 +7689,10 @@ EXPORT_SYMBOL(kmem_cache_alloc_bulk_noprof);
   * and increases the number of allocations possible without having to
   * take the list_lock.
   */
@@ -2589,7 +2589,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  
  /*
   * Calculate the order of allocation given an slab object size.
-@@ -7628,6 +7906,7 @@ static void early_kmem_cache_node_alloc(int node)
+@@ -7626,6 +7904,7 @@ static void early_kmem_cache_node_alloc(int node)
  #ifdef CONFIG_SLUB_DEBUG
  	init_object(kmem_cache_node, n, SLUB_RED_ACTIVE);
  #endif
@@ -2597,7 +2597,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  	n = kasan_slab_alloc(kmem_cache_node, n, GFP_KERNEL, false);
  	slab->freelist = get_freepointer(kmem_cache_node, n);
  	slab->inuse = 1;
-@@ -7842,6 +8121,9 @@ static int calculate_sizes(struct kmem_cache_args *args, struct kmem_cache *s)
+@@ -7840,6 +8119,9 @@ static int calculate_sizes(struct kmem_cache_args *args, struct kmem_cache *s)
  		s->offset = ALIGN_DOWN(s->object_size / 2, sizeof(void *));
  	}
  
@@ -2607,7 +2607,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  #ifdef CONFIG_SLUB_DEBUG
  	if (flags & SLAB_STORE_USER) {
  		/*
-@@ -8184,6 +8466,10 @@ void __check_heap_object(const void *ptr, unsigned long n,
+@@ -8182,6 +8464,10 @@ void __check_heap_object(const void *ptr, unsigned long n,
  		offset -= s->red_left_pad;
  	}
  
@@ -2618,7 +2618,7 @@ index eed3251eb7d0..fcb4e8c1c5e6 100644
  	/* Allow address range falling entirely within usercopy region. */
  	if (offset >= s->useroffset &&
  	    offset - s->useroffset <= s->usersize &&
-@@ -8563,6 +8849,11 @@ int do_kmem_cache_create(struct kmem_cache *s, const char *name,
+@@ -8566,6 +8852,11 @@ int do_kmem_cache_create(struct kmem_cache *s, const char *name,
  	s->flags = kmem_cache_flags(flags, s->name);
  #ifdef CONFIG_SLAB_FREELIST_HARDENED
  	s->random = get_random_long();
@@ -2727,7 +2727,7 @@ index ca1180dba1de..cc1d065b0407 100644
  
  static struct ctl_table ipv4_net_table[] = {
 diff --git a/net/ipv4/tcp_input.c b/net/ipv4/tcp_input.c
-index de9f68a9c0cf..8be4782e3971 100644
+index eed808c2adbb..2c2bbd46f37c 100644
 --- a/net/ipv4/tcp_input.c
 +++ b/net/ipv4/tcp_input.c
 @@ -85,6 +85,7 @@
@@ -2738,7 +2738,7 @@ index de9f68a9c0cf..8be4782e3971 100644
  
  #define FLAG_DATA		0x01 /* Incoming frame contained data.		*/
  #define FLAG_WIN_UPDATE		0x02 /* Incoming ACK was a window update.	*/
-@@ -6988,7 +6989,7 @@ static int tcp_rcv_synsent_state_process(struct sock *sk, struct sk_buff *skb,
+@@ -7018,7 +7019,7 @@ static int tcp_rcv_synsent_state_process(struct sock *sk, struct sk_buff *skb,
  		SKB_DR_SET(reason, TCP_RFC7323_PAWS);
  		goto discard_and_undo;
  	}
