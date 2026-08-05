@@ -230,11 +230,6 @@ vars:
   pigz_sha256: eb872b4f0e1f0ebe59c9f7bd8c506c4204893ba6a8492de31df416f0d5170fd0
   pigz_sha512: ae3d9d593e1645d65f9ab77aa828600c9af4bb30d0a073da7ae3dd805e65b87efaf6a0efb980f2d0168e475ae506eba194547d6479956dabb9d88293a9078a7f
 
-  # renovate: datasource=git-refs versioning=git depName=https://github.com/portworx/px-fuse.git
-  px_fuse_ref: 8b52ef67d261369cbc93f132db299e5dcf64ad7c
-  px_fuse_sha256: 63eba2b1926ba81169a5cb26db986106ef4a32da3bef4ffd506ffff7fc5c65c3
-  px_fuse_sha512: 93e42d93264d499074ed01ad6eb6e5b8ce9a006fcae71ac7039343ac10a7180c91a3e345d870214e75f5681944345995294fcbd5f42992b9648b868c2e272675
-
   # renovate: datasource=git-tags depName=https://gitlab.gnome.org/GNOME/glib.git
   glib_version: 2.89.2
   glib_sha256: 894fd527e305041f7723071297d79a78af4719dbd0d8fb77f6b1a85c9f5475b9
