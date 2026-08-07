@@ -76,7 +76,6 @@ spec:
     - hailort-pkg
     - mellanox-mstflint-pkg
     - tenstorrent-pkg
-    - xdma-driver-pkg
     - zfs-pkg
   reproducibleTargetName: reproducibility
 ---

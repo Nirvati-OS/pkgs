@@ -261,11 +261,6 @@ vars:
   tenstorrent_sha256: 26a0980688abc7bcc5b89c8c22777e3dead2c59b4244b780d968580eae727d55
   tenstorrent_sha512: eb36b04dc5416e262fbe5195249a26de1351d8921055d568abc97b6e84d556e959236db8cc3a05aa8c571334d8cd00077e02e2b200ce0c629e2858a4234831d8
 
-  # renovate: datasource=git-refs versioning=git depName=https://github.com/Xilinx/dma_ip_drivers.git
-  xdma_driver_ref: 8721136e74a66500b02d16cb41922d966139cd46
-  xdma_driver_sha256: b228eb88ef54a3ca11cde87951de395ad5e3172b2a72e060d2aad29547f87360
-  xdma_driver_sha512: 5f2c94f5770dda5536fb5f22bea75d56cfb10c51a28e493f40a243ccc039287aa9f1545bf4c11713c4ff2c9c663ee6ee8adeb146a4e2545e710f6b2a39d2a1e5
-
   # renovate: datasource=git-tags extractVersion=^v(?<version>.*)$ depName=git://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git
   xfsprogs_version: 7.1.1
   xfsprogs_sha256: 063edc31ba8e85c95c7faf9be465a04898bba7c6e622fdd9b146eed4ca5415e8
