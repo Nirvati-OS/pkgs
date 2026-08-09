@@ -24,7 +24,7 @@ steps:
           --buildtype=release \
           -Dmode=release \
           -Dlibdir=/usr/lib \
-          -Dversion-tag="{{ .systemd_version }}-talos" \
+          -Dversion-tag="{{ .systemd_version }}-nirvati" \
           -Dlibc=musl \
           -Dselinux=enabled \
           -Dblkid=enabled \
