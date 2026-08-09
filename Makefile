@@ -42,12 +42,17 @@ PUSH ?= false
 CI_ARGS ?=
 WITH_BUILD_DEBUG ?=
 BUILD_ARGS = --build-arg=SOURCE_DATE_EPOCH=$(SOURCE_DATE_EPOCH)
+BUILD_ARGS += --build-arg=GNU_MIRROR_URL="$(GNU_MIRROR_URL)"
 COMMON_ARGS = --file=Pkgfile
 COMMON_ARGS += --provenance=false
 COMMON_ARGS += --sbom=false
 COMMON_ARGS += --progress=$(PROGRESS)
 COMMON_ARGS += --platform=$(PLATFORM)
 COMMON_ARGS += $(BUILD_ARGS)
+
+# extra variables
+
+GNU_MIRROR_URL ?= https://mirrors.kernel.org
 
 # targets defines all the available targets
 

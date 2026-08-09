@@ -51,9 +51,9 @@ vars:
   ena_sha512: e6e14de0308a592b6bac472e5d790abb1b0d857326d734a0dc586a3a983bb239eb1488928cacb6fa7b45233b333b61cb18389d560aaac8960ddebab07cd122a6
 
   # renovate: datasource=github-releases extractVersion=^v(?<version>.*)$ depName=systemd/systemd
-  systemd_version: 261.1
-  systemd_sha256: f9b9da1103d1714703503d1746971ccbeeae945663ef3ede3b7348169b5df064
-  systemd_sha512: 5dbf8b902fbed6e719367266da658b46ed55e76c93b7aa48ebaf9daca36cb19261ebd45cb97139c51227022a8ca3d07da360953bd9b0aebb429dce6d111f7e5c
+  systemd_version: 261.2
+  systemd_sha256: ed1059ff964f5df35b6056434cc17cc83f86dc913f10489948a0b19b6081c5ec
+  systemd_sha512: 876f043970cb65b39ae15fba39f23bf94c7c3d80569503d6e8ea2c8013c30ee40ce43cb55cbcb1cf14d5c3021aafc09c0f67473bbf742d8964bf9fa30693b971
 
   # renovate: datasource=github-releases depName=flannel-io/cni-plugin
   flannel_cni_version: v1.9.1-flannel2
@@ -94,9 +94,9 @@ vars:
   ipxe_sha512: dfaf49d699623d384adc04c3737d9abb6ee13054e1c6783ea175f735bc0829f2c08b244706a215382ca8b812975e59889e809ac72c0bf33996706b847a542fef
 
   # renovate: datasource=git-refs versioning=git depName=https://github.com/a13xp0p0v/kernel-hardening-checker.git
-  kspp_ref: 0b9aebf818145f772407135b79418958c1ec5ed1
-  kspp_sha256: 6fa575bd4049fb2a393008d267815fec8bc27162f09147534974b0197231db04
-  kspp_sha512: 1befd930ca0e43acb049f3ffac584e9a13c0ef716abba0670eb976e1b6bcee3f833b2b16cb02ac193c33c3fbbeb6ff221394f4265f5b0d4b8e65488a530b0d0a
+  kspp_ref: 5b77d399781cb5aebf6e419d8f55e9813c6874f4
+  kspp_sha256: 68ccfb39a6d78a94b2baa1dfad9580d86350fb81ce3b21ed639406530a3dd3c4
+  kspp_sha512: 085366adc1ee4f1361354f23355594aa1b27c38dac36038a255b7d84fb21860589cb846c48460b2f5b41045e9073b4dba7d3b2d4e20dc1e1d5ed6944c03bc56c
 
   # renovate: datasource=git-tags extractVersion=^v(?<version>.*)$ depName=git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
   linux_version: 7.1.6
@@ -109,9 +109,9 @@ vars:
   libaio_sha512: 65c30a102433bf8386581b03fc706d84bd341be249fbdee11a032b237a7b239e8c27413504fef15e2797b1acd67f752526637005889590ecb380e2e120ab0b71
 
   # renovate: datasource=github-releases extractVersion=^v(?<version>.*)$ depName=libarchive/libarchive
-  libarchive_version: 3.8.8
-  libarchive_sha256: 3873a88801da067d0528a989af06877710529d50ee8fe6f3970cbb4302efb918
-  libarchive_sha512: 6952aaa3f7aa275b1a678c03b3ca3a50111a1305f0eb50362b8a85599f1c13a0c771530c7caea6ddcc3c8ceead4c206abca851d8b2c4b64968773d8fd6fc64de
+  libarchive_version: 3.8.9
+  libarchive_sha256: 888c934f9d95648ecb9163dc8e23ab80a476ecb81a8f1154704a227b5b676dde
+  libarchive_sha512: f37425417a9e3fdc194a2b892137452ddba6601c69e822598692d4d776c573a90e70aac4598d47c915615facc45d0c83fc46c24856ddf04afd7494b63bb9f137
 
   # renovate: datasource=git-tags extractVersion=^v(?<version>.*)$ depName=git://git.savannah.gnu.org/attr.git
   libattr_version: 2.6.0

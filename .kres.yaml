@@ -77,6 +77,12 @@ spec:
     - mellanox-mstflint-pkg
     - tenstorrent-pkg
   reproducibleTargetName: reproducibility
+  extraBuildArgs:
+    - GNU_MIRROR_URL
+  makefile:
+    extraVariables:
+      - name: GNU_MIRROR_URL
+        defaultValue: https://mirrors.kernel.org
 ---
 kind: auto.CustomSteps
 spec:
